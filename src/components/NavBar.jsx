@@ -11,14 +11,17 @@ import {
 import styles from "../styles/NavBarStyles"
 import { withStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
+import {ThemeContext} from "../contexts/ThemeContext";
 
 class NavBar extends Component {
-	state = {};
+    static contextType = ThemeContext;
+    
 	render() {
+        const {isDarkMode} = this.context;
         const {classes}= this.props;
 		return (
 			<div className={classes.root}>
-				<AppBar position="static" color="primary">
+				<AppBar position="static" color={isDarkMode ? "default" : "primary"}>
                     <Toolbar>
                         <IconButton className={classes.menuButton} color="inherit">
                             <span>French</span>
